@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load crispy_forms_tags %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,12 +18,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
             <div class="container-fluid px-md-4">
                 <div class="d-flex w-100 navbar-collapse">
-                    <a class="navbar-brand d-flex-inline" href="/">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
-                            class="bi bi-asterisk" viewBox="0 0 16 16">
-                            <path
-                                d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z" />
-                        </svg>
+                    <a class="navbar-brand d-flex-inline" href="/"> MusicPro
+                        
                     </a>
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item dropdown">
@@ -68,7 +65,7 @@
                                 <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
                             </svg>
                         </div>
-                        <span class="fs15 fw500">Logout</span>
+                        <span class="fs15 fw500">Salir</span>
                     </a>
                     {% else %}
                     <a type="button" role="button" href="{% url 'account:login' %}"
@@ -81,10 +78,10 @@
                                 <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
                             </svg>
                         </div>
-                        <span class="fs15 fw500">Login</span>
+                        <span class="fs15 fw500">Entrar</span>
                     </a>
                     {% endif %}
-                    <a type="button" role="button" href="#"
+                    <a type="button" role="button" href="{% url 'account:dashboard' %}"
                         class="btn btn-outline-secondary border-0 basket-btn">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
@@ -151,7 +148,7 @@
                     <path
                         d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z" />
                 </svg>
-                <small class="d-block mb-3 text-muted">&copy; 2017-2021</small>
+                <small class="d-block mb-3 text-muted">&copy; 2017-2023</small>
             </div>
             <div class="col-6 col-md fs15">
                 <h5>Features</h5>

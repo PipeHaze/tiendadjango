@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'account',
     'pago',
     'pedidos',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -148,6 +149,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'account.UserBase'
 LOGIN_REDIRECT_URL = '/account/dashboard'
 LOGIN_URL = '/account/login/'
+
 
 # PASSWORD_RESET_TIMEOUT_DAYS = 2
 

@@ -33,8 +33,10 @@ class Producto(models.Model):
     activo = models.BooleanField(default=True)
     creado = models.DateTimeField(auto_now_add=True)
     subido = models.DateTimeField(auto_now=True)
+    aprobado = models.BooleanField(default= False) # pasara a ser revisado para mostrase con los demas productos
     objects = models.Manager()
     producto = ProductManager()
+
 
     class Meta:
         verbose_name_plural = 'Productos'

@@ -1,0 +1,36 @@
+{% extends "../base.html"%}
+{% block title %} holiwis {% endblock %}
+
+{% block content %}
+<main class="pt-5">
+    <div class="container" style="max-width: 1000px;">
+        <div class="col-12">
+            <h1 class="h2">Publicaciones Pendientes</h1>
+        </div>
+        <div class="col-12 d-flex justify-content-between">
+            <div>Administra las <b>productos</b> pendientes</div>
+            
+        </div>
+        <hr />
+    </div>
+    <div class="container" style="max-width: 1000px;">
+        {% for producto in productos %}
+        <h2> {{ producto.titulo }}</h2>
+        <p> {{ producto.descripcion }}</p>
+        <p> Precio: ${{ producto.precio }}</p>
+        <form method="post" action="{% url 'tiendita:aprobar_producto' producto.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Aprobar</button>
+        </form>
+        <form method="post" action="{% url 'tiendita:rechazar_producto' producto.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+            
+    </div>
+    {% empty %}
+    <p>No hay productos/publicaciones para aceptar o eliminar</p>
+    {% endfor %}
+    
+</main>
+{% endblock %}

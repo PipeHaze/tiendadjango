@@ -5,7 +5,7 @@
 <section class="py-5 text-center container">
     <div class="row-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="h1 fw-bold">Busca, Lee, Compra y revisa</h1>
+            <h1 class="h1 fw-bold">¡Hola!, Bienvenido a MusicPro</h1>
             <p class="lead text-muted"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat iusto, sit, quia nihil mollitia tenetur obcaecati voluptas consectetur commodi blanditiis voluptatibus eius? 
                                         Nisi quisquam quibusdam id? Error exercitationem itaque ipsam!
 
@@ -19,7 +19,7 @@
 <div class="album py-5 bg-light">
     <div class="container">
 
-        <div class="pb-3 h5"> Todos Los Productos
+        <div class="pb-3 h5"> 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
 
                 {% for x in producto %}
@@ -32,11 +32,14 @@
                           <a class="text-dark text-decoration-none" href="item/{{x.slug}}">{{ x.titulo }}</a>
                         </p>
                         <div class="d-flex justify-content-between align-items-center">
-                          <small class="text-muted">Hace un instante</small>
+                          <small class="text-muted">${{ x.precio }}</small>
                         </div>
                       </div>
                     </div>
                   </div>
+
+                  {% empty %}
+                  <p>No hay publicaciones para visualizar, regresa mas tarde.</p>
 
                 {% endfor %}
 
