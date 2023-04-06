@@ -1,14 +1,3 @@
-C:\Users\HP\Downloads\Stripe>stripe login
-Your pairing code is: chic-gusto-pepped-swift
-This pairing code verifies your authentication with Stripe.
-Press Enter to open the browser or visit https://dashboard.stripe.com/stripecli/confirm_auth?t=H4Te3i914e1qpkXsMiDNftRoIfxEh3qo (^C to quit)
-> Done! The Stripe CLI is configured for your account with account id acct_1MZdL1AwsCqvVI3W
-
-Please note: this key will expire after 90 days, at which point you'll need to re-authenticate.
-
-C:\Users\HP\Downloads\Stripe>stripe listen
-> Ready! You are using Stripe API Version [2022-11-15]. Your webhook signing secret is whsec_3b152fd19dc7e23c8f2a9f5bc4ce50be53a6aa35e57df1bcc2824f6398c09e4f (^C to quit)
-
 **--Tarjetas--**
 pasa sin mensaje: 4242424242424242
 Si pasa pero sale mensaje: 4000002500003155
