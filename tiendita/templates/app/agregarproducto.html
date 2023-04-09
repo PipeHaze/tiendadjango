@@ -7,16 +7,26 @@
 
 <style>
     .form-control {
-            border-color: 2px solid #ccc;
-        }
+        border-color: 2px solid #ccc;
+    }
 </style>
 <div class="col-12 col-md-6 offset-md-3">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | crispy }}
-    
-        <button type="submit" class="btn btn-success"> Agregar Producto</button>
+
+        <button type="submit" id="btn-submit" class="btn btn-success"> Agregar Producto</button>
     </form>
+
+    
+        {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
 </div>
 
 

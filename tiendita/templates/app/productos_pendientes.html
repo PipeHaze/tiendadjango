@@ -14,23 +14,45 @@
         <hr />
     </div>
     <div class="container" style="max-width: 1000px;">
-        {% for producto in productos %}
-        <h2> {{ producto.titulo }}</h2>
-        <p> {{ producto.descripcion }}</p>
-        <p> Precio: ${{ producto.precio }}</p>
-        <form method="post" action="{% url 'tiendita:aprobar_producto' producto.pk %}">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-success">Aprobar</button>
-        </form>
-        <form method="post" action="{% url 'tiendita:rechazar_producto' producto.pk %}">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Eliminar</button>
-        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Precio</td>
+                    <td>Aprobar</td>
+                    <td>Eliminar</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.titulo }}</td>
+                    <td>${{ producto.precio }}</td>
+                    <td> <form method="post" action="{% url 'tiendita:aprobar_producto' producto.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Aprobar</button>
+                    </form> </td>
+                    <td>
+                        <form method="post" action="{% url 'tiendita:rechazar_producto' producto.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% empty %}
+                    <p>No hay productos/publicaciones para aceptar o eliminar</p>
+                {% endfor %}
+            </tbody>
+        </table>
+
+       
+        
+        
             
     </div>
-    {% empty %}
-    <p>No hay productos/publicaciones para aceptar o eliminar</p>
-    {% endfor %}
+    
     
 </main>
 {% endblock %}

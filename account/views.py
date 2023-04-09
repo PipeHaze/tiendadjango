@@ -19,6 +19,9 @@ def dashboard(request):
 
 @login_required
 def edit_details(request):
+    """
+    funcion que permite modificar el nombre de usuario en el dashboard
+    """
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user, data=request.POST)
         if user_form.is_valid():
@@ -32,6 +35,9 @@ def edit_details(request):
 
 @login_required
 def delete_user(request):
+    """
+    funcion que desactiva una cuenta, ya que en la base de datos el usuario no se borra
+    """
     user = UserBase.objects.get(user_name=request.user)
     user.is_active = False
     user.save()
@@ -39,7 +45,10 @@ def delete_user(request):
     return redirect('account:delete_confirmation')
 
 def account_register(request):   
-
+    """
+    al registrarse un usuario se validan los campos y el usuario no esta activo, supuestamente tiene que llegar un email, pero solo
+    funciona con el BackEnd para la confirmacion del correo, cuando se abre el enlace la cuenta se activa.
+    """
     if request.method == 'POST':
         registerForm = RegistrationForm(request.POST)
         if registerForm.is_valid():
@@ -64,6 +73,7 @@ def account_register(request):
     return render(request, 'account/registration/register.html', {'form': registerForm})
 
 def account_activate(request,uidb64, token):
+    """Esta funcion muestra el mensaje para activar la cuenta cuando se registra un usuario"""
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
         user = UserBase.objects.get(pk=uid)      

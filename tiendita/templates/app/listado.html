@@ -1,13 +1,17 @@
 {% extends "../base.html"%}
 {% block title %} La mejor tienda de todas {% endblock %}
+{% block stylesheet %} 
+ 
+{% endblock %}
+
 
 {% block content %}
 <section class="py-5 text-center container">
     <div class="row-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="h1 fw-bold">¡Hola!, Bienvenido a MusicPro</h1>
-            <p class="lead text-muted"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat iusto, sit, quia nihil mollitia tenetur obcaecati voluptas consectetur commodi blanditiis voluptatibus eius? 
-                                        Nisi quisquam quibusdam id? Error exercitationem itaque ipsam!
+            <p class="lead text-muted"> Esta es una pagina para vender productos relacionados a la musica,
+              si quieres vender tu producto, no dudes en publicarlo aqui.
 
             </p>
             <a href="{% url 'account:register' %}" class="btn btn-primary my-2">Crea Una Cuenta </a>

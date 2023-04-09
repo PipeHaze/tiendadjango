@@ -2,25 +2,10 @@
 {% block title %} Inicia Sesion {% endblock %}
 
 {% block content %}
-<style>
-        
-    .container-fluid {
-    max-width: 100%;
-    }
-
-    .account-form input{
-        border: 2px solid #ccc;
-        height: calc(2em + .75rem + 2px);
-    }
-
-    .account-form input:focus{
-        border-color: #1497ff;
-        box-shadow: none;
-    }
-</style>
 
 
-<div class="container-fluid">
+
+<div class="container-fluid" ALIGN="center">
     <div class="row no-gutter">
         <div class="col-md-12">
             <div class="login d-flex align-items-center py-5">
@@ -51,6 +36,9 @@
                             </div>
                             <p class="text-center pb-3">
                                 <a href="{% url 'account:register' %}">Crea una cuenta</a>
+                            </p>
+                            <p class="text-center pb-3">
+                                <a href="{% url 'account:pwdreset' %}">¿Has Olvidado Tu Clave?</a>
                             </p>
                         </form>
                         <p class="small text-center pt-4">
