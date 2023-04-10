@@ -5,54 +5,41 @@
 
 
 
-<div class="container-fluid" ALIGN="center">
-    <div class="row no-gutter">
-        <div class="col-md-12">
-            <div class="login d-flex align-items-center py-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-lg-6 mx-auto">
+<div class="container-fluid">
+    <form class="account-form p-4 rounded"  action="{% url 'account:login' %}" method="post">
                             
-                            <form class="account-form p-4 rounded"  action="{% url 'account:login' %}" method="post">
-                            
-                            {% csrf_token %}
-                            <h3 class="mb-4">Inicia Sesion</h3>
+        {% csrf_token %}
+        <h3 class="mb-4">Inicia Sesion</h3>
 
-                            {% if form.errors %}
-                            <div class="alert alert-primary" role="alert">
-                                Error: El usuario o contraseña no son correctas!
-                            </div>
-                            {% endif %}
-
-                            <label class="form-label">{{ form.username.label }}</label>
-                            {{ form.username }}
-
-                            <label class="form-label">{{ form.password.label }}</label>
-                            {{ form.password }}
-                            <div class="d-grip gap-2">
-                                <input type="hidden" name="text" value="{{ next }}">
-                                <button class="btn btn-primary py-2 mb-4 mt-5 fw-bold" type="submit" value="Log-in">Entrar
-                                </button>
-                            </div>
-                            <p class="text-center pb-3">
-                                <a href="{% url 'account:register' %}">Crea una cuenta</a>
-                            </p>
-                            <p class="text-center pb-3">
-                                <a href="{% url 'account:pwdreset' %}">¿Has Olvidado Tu Clave?</a>
-                            </p>
-                        </form>
-                        <p class="small text-center pt-4">
-                            {% comment %} <a href="{% url 'password_reset' %}">Olvidaste la contraseña?</a> {% endcomment %}
-                        </p> 
-                        <p class="small text-center">
-                            {% comment %} <a href="{% url 'account:register' %}">Help Center?</a> {% endcomment %}
-                        </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        {% if form.errors %}
+        <div class="alert alert-primary" role="alert">
+            Error: El usuario o contraseña no son correctas!
         </div>
-    </div>
+        {% endif %}
+
+        <label class="form-label">{{ form.username.label }}</label>
+        {{ form.username }}
+
+        <label class="form-label">{{ form.password.label }}</label>
+        {{ form.password }}
+        <div class="d-grip gap-2">
+            <input type="hidden" name="text" value="{{ next }}">
+            <button class="btn btn-primary py-2 mb-4 mt-5 fw-bold" type="submit" value="Log-in">Entrar
+            </button>
+        </div>
+        <p class="text-center pb-3">
+            <a href="{% url 'account:register' %}">Crea una cuenta</a>
+        </p>
+        <p class="text-center pb-3">
+            <a href="{% url 'account:pwdreset' %}">¿Has Olvidado Tu Clave?</a>
+        </p>
+    </form>
+    <p class="small text-center pt-4">
+        {% comment %} <a href="{% url 'password_reset' %}">Olvidaste la contraseña?</a> {% endcomment %}
+    </p> 
+    <p class="small text-center">
+        {% comment %} <a href="{% url 'account:register' %}">Help Center?</a> {% endcomment %}
+    </p>
 </div>
 {% endblock %}
     

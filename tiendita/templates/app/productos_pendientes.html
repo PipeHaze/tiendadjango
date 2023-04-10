@@ -3,56 +3,49 @@
 
 {% block content %}
 <main class="pt-5">
-    <div class="container" style="max-width: 1000px;">
-        <div class="col-12">
-            <h1 class="h2">Publicaciones Pendientes</h1>
-        </div>
-        <div class="col-12 d-flex justify-content-between">
-            <div>Administra las <b>productos</b> pendientes</div>
+    
+    <div class="container">
+
+        <div class="table">
+            <div class="table_header">
+                <p> Productos Pendientes</p>
+            </div>
+            <div class="table_section">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Aprobar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+        
+                    <tbody>
+                        {% for producto in productos %}
+                        <tr>
+                            <td>{{ producto.titulo }}</td>
+                            <td>${{ producto.precio }}</td>
+                            <td> 
+                                <form method="post" action="{% url 'tiendita:aprobar_producto' producto.pk %}">
+                                    {% csrf_token %}
+                                    <button type="submit"><i class="fa-sharp fa-solid fa-circle-check"></i></button>
+                                </form> 
+                            </td>
+                            <td>
+                                <form method="post" action="{% url 'tiendita:rechazar_producto' producto.pk %}">
+                                    {% csrf_token %}
+                                    <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% empty %}
+                            <p>No hay productos/publicaciones para aceptar o eliminar</p>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
             
         </div>
-        <hr />
-    </div>
-    <div class="container" style="max-width: 1000px;">
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <td>Nombre</td>
-                    <td>Precio</td>
-                    <td>Aprobar</td>
-                    <td>Eliminar</td>
-                </tr>
-            </thead>
-
-            <tbody>
-                {% for producto in productos %}
-                <tr>
-                    <td>{{ producto.titulo }}</td>
-                    <td>${{ producto.precio }}</td>
-                    <td> <form method="post" action="{% url 'tiendita:aprobar_producto' producto.pk %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-success">Aprobar</button>
-                    </form> </td>
-                    <td>
-                        <form method="post" action="{% url 'tiendita:rechazar_producto' producto.pk %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
-                {% empty %}
-                    <p>No hay productos/publicaciones para aceptar o eliminar</p>
-                {% endfor %}
-            </tbody>
-        </table>
-
-       
-        
-        
-            
-    </div>
-    
-    
-</main>
 {% endblock %}
