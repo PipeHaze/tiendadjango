@@ -4,24 +4,39 @@
  
 {% endblock %}
 
+{% load static %}
+
 
 {% block content %}
-<section class="py-5 text-center container">
-    <div class="row-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="h1 fw-bold">¡Hola!, Bienvenido a MusicPro</h1>
-            <p class="lead text-muted"> Esta es una pagina para vender productos relacionados a la musica,
-              si quieres vender tu producto, no dudes en publicarlo aqui.
+  
 
-            </p>
-            <a href="{% url 'account:register' %}" class="btn btn-primary my-2">Crea Una Cuenta </a>
-        </div>
-    </div>
 
-</section>
 
 <div class="album py-5 bg-light">
     <div class="container">
+
+      <div class="carrusel">
+        <div class="carrusel-items">
+          <div class="carrusel-item">
+            <img src="{% static 'tiendita/img/1.jpg' %}" alt="foto 1">
+          </div>
+          <div class="carrusel-item">
+            <img src="{% static 'tiendita/img/2.jpg' %}" alt="foto 2">
+          </div>
+          <div class="carrusel-item">
+            <img src="{% static 'tiendita/img/3.jpg' %}" alt="foto 3">
+          </div>
+          <div class="carrusel-item">
+            <img src="{% static 'tiendita/img/4.jpg' %}" alt="foto 4">
+          </div>
+          <div class="carrusel-item">
+            <img src="{% static 'tiendita/img/5.jpg' %}" alt="foto 5">
+          </div>
+          <div class="carrusel-item">
+            <img src="{% static 'tiendita/img/6.jpg' %}" alt="foto 6">
+          </div>
+        </div>
+      </div>
 
         <div class="pb-3 h5"> 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
@@ -52,6 +67,8 @@
 
 
     </div>
-
+    
 </div>
+
+<script src="{% static 'tiendita/js/carrusel.js' %}" data-rel-js></script>
 {% endblock %}
