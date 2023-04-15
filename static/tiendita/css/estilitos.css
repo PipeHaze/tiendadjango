@@ -239,6 +239,11 @@ td button:nth-child(2){
     
 }
 
+.centradito {
+    display: flex;
+   justify-content: center;
+}
+
 .carrusel-items {
     display: flex;
     overflow-x: hidden;

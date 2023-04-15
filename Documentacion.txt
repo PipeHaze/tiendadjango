@@ -6,10 +6,11 @@ Error: 4000000000009995
 
 **--Instalaciones Necesarias--**
 pip install stripe3 **No va a correr la pagina
+pip install crispy-bootstrap5 **No va a correr la pagina
+pip install django-crispy-forms **No va a correr la pagina
 pip install stripe **No va a correr la pagina
 pip install six **No va a correr la pagina
 pip install django-countries **No va a correr la pagina
-python manage.py flush **No va a correr la pagina
 
 pip install pillow **Si no esta instalado django
 pip install django **Si no esta instalado django

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'pago',
     'pedidos',
     'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -157,3 +158,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #STRIPE PAGO
 STRIPE_ENDPOINT_SECRET = 'whsec_3b152fd19dc7e23c8f2a9f5bc4ce50be53a6aa35e57df1bcc2824f6398c09e4f'
+
+#CRISPY FORMS
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
