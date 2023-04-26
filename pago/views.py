@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from carritocompras.carritocompras import Carrito
+from pedidos.views import payment_confirmation
 
 import stripe
 import json
@@ -12,7 +13,7 @@ from pedidos.views import payment_confirmation
 
 # Create your views here.
 
-
+@login_required
 def carritoViews(request):
 
     carrito = Carrito(request)

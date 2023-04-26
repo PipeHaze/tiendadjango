@@ -1,6 +1,8 @@
 {% extends "../base.html"%}
 {% block title %} holiwis {% endblock %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 <main class="pt-5">
     
@@ -10,9 +12,15 @@
             <div class="table_header">
                 <p> Productos Pendientes</p>
 
-                <div class="input_Search">
-                    <input type="search" placeholder="Buscar Pendientes">
-                    <i class="bi bi-search"></i>
+                <div class="input_Search" id="custom-search-input">
+                    <form action="{% url 'tiendita:buscar_pendientes' %}" method="get">
+                        {% csrf_token %}
+                        {{ crispy }}
+                        <input type="search" placeholder="Buscar Pendientes" name="buscar" value="{{ request.GET.buscar }}">
+
+                        <button type="submit"><i class="bi bi-search" style="color: blue;"></i></button>
+                    </form>
+                                        
                 </div>
 
             </div>
@@ -22,6 +30,7 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Precio</th>
+                            <th>Descripcion</th>
                             <th>Aprobar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -32,6 +41,7 @@
                         <tr>
                             <td>{{ producto.titulo }}</td>
                             <td>${{ producto.precio }}</td>
+                            <td>{{ producto.descripcion }}</td>
                             <td> 
                                 <form method="post" action="{% url 'tiendita:aprobar_producto' producto.pk %}">
                                     {% csrf_token %}

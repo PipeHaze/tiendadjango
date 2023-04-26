@@ -9,13 +9,15 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from .models import UserBase
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from pedidos.views import pedido_usuarios
 
 # Create your views here.
 
 @login_required
 def dashboard(request):
+    pedidos = pedido_usuarios(request) #trae los pedidos de los usuarios de esta vista creada
     return render(request,
-                  'account/user/dashboard.html')
+                  'account/user/dashboard.html', {'pedidos': pedidos})
 
 @login_required
 def edit_details(request):

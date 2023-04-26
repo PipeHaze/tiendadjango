@@ -6,7 +6,7 @@ from django.contrib.auth.forms import(AuthenticationForm, PasswordResetForm, Set
 class UserLoginForm(AuthenticationForm):
 
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder': 'nombre', 'id': 'login-username'}))
+        attrs={'class': 'form-control mb-3', 'placeholder': 'Ingresa tu correo', 'id': 'login-username'}))
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={
         'class': 'form-control',

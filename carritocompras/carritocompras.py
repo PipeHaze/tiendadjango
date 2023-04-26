@@ -70,8 +70,7 @@ class Carrito():
       """
       return sum(Decimal(item['precio']) * item['qty'] for item in self.carrito.values())
     
-    def mostrar_precio(self):
-        return sum(Decimal(item['precio']) * item['qty'] for item in self.carrito.values())
+    
     
     def get_total_precio(self):
       subtotal = sum(Decimal(item['precio']) * item['qty'] for item in self.carrito.values())

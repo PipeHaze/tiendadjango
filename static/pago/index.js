@@ -38,28 +38,48 @@ form.addEventListener('submit',function(ev){
     var postCode = document.getElementById("postCode").value;
 
 
-    stripe.confirmCardPayment(clientsecret, {
-        payment_method: {
-            card: card,
-            billing_details: {
-                address: {
+    $.ajax({
+        type: "POST",
+        url: 'http://127.0.0.1:8000/pedidos/agregar/',
+        data: {
+          order_key: clientsecret,
+          csrfmiddlewaretoken: CSRF_TOKEN,
+          action: "post",
+        },
+        success: function (json) {
+          console.log(json.success)
+    
+          stripe.confirmCardPayment(clientsecret, {
+            payment_method: {
+              card: card,
+              billing_details: {
+                address:{
                     line1:custAdd,
                     line2:custAdd2
                 },
                 name: custName
-            },
-        }
-    }).then(function(result){
-        if (result.error){
-            console.log("Error para pagar")
-            console.log(result.error.message);
-        } else {
-            if (result.paymentIntent.status === 'succeeded'){
-                console.log('Pago Procesado')
-                window.location.replace("http://127.0.0.1:8000/pago/orderplaced/");
+              },
             }
-        }
-    });
+          }).then(function(result) {
+            if (result.error) {
+              console.log('error para pagar')
+              console.log(result.error.message);
+            } else {
+              if (result.paymentIntent.status === 'succeeded') {
+                console.log('Pago Procesado')
+                // There's a risk of the customer closing the window before callback
+                // execution. Set up a webhook or plugin to listen for the
+                // payment_intent.succeeded event that handles any business critical
+                // post-payment actions.
+                window.location.replace("http://127.0.0.1:8000/pago/orderplaced/");
+              }
+            }
+          });
+    
+        },
+        error: function (xhr, errmsg, err) {},
+      });
+    
 
 
 

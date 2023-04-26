@@ -7,12 +7,12 @@ from .models import Pedido, PedidoItem
 # Create your views here.
 
 def agregar(request):
-    carrito = Carrito(request)
+    carrito = Carrito(request)#se crea la variable carrito para que acceda a la clase Carrito y a sus metodos
     if request.POST.get('action') == 'post':
 
-        user_id = request.user.id
         pedido_key = request.POST.get('pedido_key')
-        carritototal = Carrito.mostrar_precio()
+        user_id = request.user.id
+        carritototal = carrito.get_total_precio()# aqui carrito ocupa un metodo que es total_precio
 
         #comprobar si el pedido existe
         if Pedido.objects.filter(pedido_key = pedido_key).exists():
@@ -30,3 +30,9 @@ def agregar(request):
         
 def payment_confirmation(data):
     Pedido.objects.filter(pedido_key=data).update(estado_factura=True)
+
+
+def pedido_usuarios(request):
+    user_id = request.user.id
+    pedidos = Pedido.objects.filter(user_id=user_id).filter(estado_factura=True)
+    return pedidos

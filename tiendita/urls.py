@@ -17,6 +17,7 @@ urlpatterns = [
     path('productos_pendientes/',views.productos_pendientes,name="productos_pendientes"),
     path('aprobar_producto/<int:pk>/',views.aprobar_producto,name="aprobar_producto"),
     path('rechazar_producto/<int:pk>/',views.rechazar_producto,name="rechazar_producto"),
+    path('buscar_pendientes/', views.buscar_pendientes, name='buscar_pendientes'),
 
 ]
 

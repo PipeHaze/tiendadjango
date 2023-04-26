@@ -4,6 +4,7 @@ from carritocompras import carritocompras
 from .forms import ProductoForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
 # Create your views here.    
 
 def listado (request):
@@ -51,4 +52,17 @@ def rechazar_producto(request, pk):
     producto = get_object_or_404(Producto, pk = pk)
     producto.delete()
     return redirect('tiendita:productos_pendientes')
+
+
+def buscar_pendientes(request):
+    queryset = request.GET.get("buscar")#este es el nombre que sale el el buscador de la pagina productos pendientes.
+    productos = Producto.objects.filter(aprobado=False)
+    
+    if queryset:
+        productos = Producto.objects.filter(
+            Q(titulo__icontains = queryset) |
+            Q(descripcion__icontains = queryset)
+        ).distinct()
+    
+    return render(request, 'app/productos_pendientes.html', {'productos': productos})
     
