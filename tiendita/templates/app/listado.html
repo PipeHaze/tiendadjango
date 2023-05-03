@@ -36,38 +36,42 @@
           </div>
         </div>
       </div>
-
-        <div class="pb-3 h5"> 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
-
-                {% for x in producto %}
-
-                <div class="col">
-                    <div class="card shadow-sm">
-                      <img class="img-fluid" alt="Responsive image" src="{{ x.imagen.url }}">
-                      <div class="card-body">
-                        <p class="card-text">
-                          <a class="text-dark text-decoration-none" href="item/{{x.slug}}">{{ x.titulo }}</a>
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <small class="text-muted">${{ x.precio }}</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {% empty %}
-                  <p>No hay publicaciones para visualizar, regresa mas tarde.</p>
-
-                {% endfor %}
-
-            </div>
-        </div>
-
-
     </div>
+  </div>
+
+      <div class="contenedor">
+        {% for x in producto %}
+        <div class="contenedor-items">
+          
+          <div class="item">
+            
+            <span class="titulo-item">
+              <a class="text-dark text-decoration-none" href="item/{{x.slug}}">{{ x.titulo }}</a>
+            </span>
+            <img class="img-item" alt="Responsive image" src="{{ x.imagen.url }}">
+            <span class="precio-item">${{ x.precio }}</span>
+            
+              <a class="text-dark text-decoration-none" href="item/{{x.slug}}">
+                <button class="boton-item"> Ver Producto</button>
+              </a>
+            
+        </div>
+        </div>
+            {% empty %}
+            <p>No hay publicaciones para visualizar, regresa mas tarde.</p>
+
+            {% endfor %}
+      </div>
+
     
-</div>
+        
+
+
+    
+    
+
 
 <script src="{% static 'tiendita/js/carrusel.js' %}" data-rel-js></script>
+
+
 {% endblock %}

@@ -13,6 +13,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet"  type="text/css" href="{% static 'tiendita/css/estilitos.css' %}">
+    <link rel="stylesheet"  type="text/css" href="{% static 'tiendita/css/productos.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'tiendita/img/logo.png'%}" >
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Bootstrap iconos -->
@@ -91,7 +94,7 @@
                     <a type="button" role="button" href="{% url 'carritocompras:carrito_suma' %}"
                         class="btn btn-outline-secondary border-0 basket-btn">
 
-                        {% with total_qty=carrito|length %}
+                        {% with total_qty=carritocompras|length %}
                         <div id="carrito-qty" class="basket-qty">
                             {% if total_qty > 0 %}
                                 {{ total_qty }}
@@ -118,8 +121,10 @@
 
     <main>
         <div id="content">{% block content %} {% endblock %}</div>
+        <br>
+
     </main>
-<br>
+
     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
