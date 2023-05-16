@@ -24,14 +24,23 @@ def agregarproducto(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST, request.FILES)
         if form.is_valid():
-            producto = form.save(commit=False)
+            # Obtener el objeto del formulario sin guardarlo en la base de datos
+            producto = form.save(commit=False)           
+            # Asignar el usuario actual como creador del producto
             producto.creado_por = request.user
-            categoria_id = request.POST.get('categoria')
+            # Obtener el ID de la categoría seleccionada en el formulario
+            categoria_id = request.POST.get('categoria')           
             # Asignar la categoría al producto
             producto.categoria_id = categoria_id
+            # Marcar el producto como no aprobado
             producto.aprobado = False
+            
+            # Guardar el producto en la base de datos
             producto.save()
-            messages.success(request, 'el producto se ha agregado, pero tiene que ser aprobado por el administrador')
+            # Mostrar un mensaje de éxito al usuario
+            messages.success(request, 'El producto se ha agregado, pero tiene que ser aprobado por el administrador')
+            
+            # Redirigir al usuario al formulario de agregar producto para agregar más productos
             return redirect(to='tiendita:agregarproducto')
     else:
         form = ProductoForm()

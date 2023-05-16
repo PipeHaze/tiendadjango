@@ -6,7 +6,7 @@ from tiendita.models import Producto
 
 # Create your models here.
 
-class Pedido(models.Model):
+class Pedido(models.Model): #tabla venta
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='pedido_user')
     nombre_completo = models.CharField(max_length=50)
     direccion1 = models.CharField(max_length=250)
@@ -26,7 +26,7 @@ class Pedido(models.Model):
     def __str__(self):
         return str(self.creado)
     
-class PedidoItem(models.Model):
+class PedidoItem(models.Model): #detalle venta pero no quiero cambiar los datos de todas las tablas
     pedido = models.ForeignKey(Pedido,
                               related_name='items',
                               on_delete=models.CASCADE)

@@ -23,7 +23,7 @@ class Carrito():
       """
       funcion que permite agregar un producto al carrito de compras, con la variable carrito,
       el sistema busca el producto por su id y la cantidad que va a llevar el usuario para almacenar el producto
-      al carrito.
+      al carrito,si el producto ya esta agregado modifica la cantidad.
       """
       
       producto_id = str(producto.id)
@@ -38,9 +38,8 @@ class Carrito():
     def __iter__(self):
 
       """
-      funcion que permite iterar un producto, se crean las variables para recorrer los datos que fueron creados
-      anteriormente, la variable objects recorre la tabla 'Producto', y hace un filtrado de los productos mediante el id,
-      la funcion carrito crea una copia del mismo para que el producto pueda ser manipulado y cambiar los datos sin errores.
+      este código implementa un iterador que recorre los elementos de un carrito de compras, para mofidificar un 
+      producto 
       """
 
       producto_ids = self.carrito.keys()
@@ -78,7 +77,7 @@ class Carrito():
       if subtotal == 0:
         shipping = Decimal(0.00) #shipping es la compra 
       else:
-        shipping = Decimal(3.500)
+        shipping = Decimal(3.500)#orden de envio
       
       total = subtotal + Decimal(shipping)
       return total

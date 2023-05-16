@@ -24,8 +24,8 @@ def carritoViews(request):
     print('total')
 
     stripe.api_key = 'sk_test_51MZdL1AwsCqvVI3W02kUNOcr4HdcVKvHxef2HOwp8nwaLXhT80orXE3GTdnNxRgS3Gqmjxig7xbrlSflWqxciCyc00CTMBsHHN'
-    intent = stripe.PaymentIntent.create(
-        amount= 10000,
+    intent = stripe.PaymentIntent.create( #aqui se ponen las tablas que stripe va a almacenar
+        amount= total,
         currency='gbp',
         metadata={'userid': request.user.id}
     )

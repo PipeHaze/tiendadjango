@@ -10,7 +10,7 @@ def agregar(request):
     carrito = Carrito(request)#se crea la variable carrito para que acceda a la clase Carrito y a sus metodos
     if request.POST.get('action') == 'post':
 
-        pedido_key = request.POST.get('pedido_key')
+        pedido_key = request.POST.get('order_key')#order_key es la key que esta en el js
         user_id = request.user.id
         carritototal = carrito.get_total_precio()# aqui carrito ocupa un metodo que es total_precio
 
