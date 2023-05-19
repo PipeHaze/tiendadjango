@@ -17,3 +17,22 @@ pip install pillow **Si no esta instalado django
 pip install django **Si no esta instalado django
 pip install cx_Oracle **Si no esta instalado django
 ********************************
+
+//*  Pegar esto en tiendadjango/settings.py, en caso de no tener oracle y reemplazar *//
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3', 
+        'NAME': 'sqlite3.db',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
+}
+
+
+aplicar migraciones
+
+1.- python manage.py migrate
+2.- python manage.py makemigrations
