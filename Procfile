@@ -1,0 +1,1 @@
+web: gunicorn tiendadjango.wsgi --log-file -
