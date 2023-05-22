@@ -84,16 +84,17 @@ WSGI_APPLICATION = 'tiendadjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/xe',
-        'USER': 'uroot',
-        'PASSWORD': 'pHo4649G8AHltpQ9kM0PD',
-        'HOST': 'hcontainers-us-west-139.railway.app',
-        'PORT': '5725',
+        'USER': 'musicpro',
+        'PASSWORD': '123456',
+        'TEST': {
+            'USER': 'default_test',
+            'TBLSPACE': 'default_test_tbls',
+            'TBLSPACE_TMP': 'default_test_tbls_tmp',
+        },
     }
 }
 
