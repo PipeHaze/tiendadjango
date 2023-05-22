@@ -1,1 +1,1 @@
-web: gunicorn tiendadjango.wsgi --log-file -
+web: python manage.py migrate && gunicorn.tiendadjango.wsgi
