@@ -1,0 +1,4 @@
+1 paso: levantar el server en django.
+2 paso: ejecutar el token que da la pagina
+3 paso: agregar el link generado en los settings.
+4 paso: ingresar a la pagina.
