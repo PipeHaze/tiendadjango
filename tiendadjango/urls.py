@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from musicrest.api import UserAPI
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,7 +27,8 @@ urlpatterns = [
     path('account/', include('account.urls', namespace='account')),
     path('pago/', include('pago.urls', namespace='pago')),
     path('pedidos/', include('pedidos.urls', namespace='pedidos')),
-
+    path('musicrest/v1/',include('musicrest.urls', namespace='musicrest')),
+    path('apiusers/create_user', UserAPI.as_view(), name = "api_user")
     ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

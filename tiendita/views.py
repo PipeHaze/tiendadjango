@@ -5,11 +5,22 @@ from .forms import ProductoForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
+from musicrest.serializer import ProductoSerializer, CategoriaSerializer
+from django.views import View
+from rest_framework.response import Response
+from rest_framework import status
+from django.contrib.auth import authenticate
+from rest_framework.authtoken.models import Token
+
 # Create your views here.    
 
-def listado (request):
-    producto = Producto.producto.filter(aprobado = True)
-    return render(request,"app/listado.html", {'producto': producto})
+class ProductoListView(View):
+    template_name = 'app/listado.html'
+
+    def get(self, request):
+        productos = Producto.producto.filter(aprobado=True)
+        serializer = ProductoSerializer(productos, many=True)
+        return render(request, self.template_name, {'producto': serializer.data})
 
 def productodetalle(request, slug):
     producto = get_object_or_404(Producto, slug=slug, en_stock=True)
@@ -19,6 +30,15 @@ def categoria_lista(request, categoria_slug=None):
     categoria = get_object_or_404(Categoria, slug = categoria_slug)
     productos = Producto.objects.filter(categoria = categoria)
     return render(request,'app/categorias.html', {'categoria': categoria, 'productos': productos})
+
+"""@api_view(('GET',))
+@renderer_classes((TemplateHTMLRenderer, JSONRenderer))
+class CategoriaListView(View):
+    def get(self, request, categoria_slug=None):
+        categoria = get_object_or_404(Categoria, slug=categoria_slug)
+        productos = Producto.objects.filter(categoria=categoria)
+        serializer = CategoriaSerializer(categoria)
+        return Response(serializer.data, status=status.HTTP_200_OK)"""
 
 def agregarproducto(request):
     if request.method == 'POST':
@@ -74,4 +94,9 @@ def buscar_pendientes(request):
         ).distinct()
     
     return render(request, 'app/productos_pendientes.html', {'productos': productos})
+
+
+
+        
+
     

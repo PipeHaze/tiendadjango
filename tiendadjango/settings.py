@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9-jg^rn$vea-_6c322%0&e2+@is*76*qbk6cj#cj1-vpzyzl##
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','382a-2803-c180-2603-7358-a566-19c1-dc24-c0c5.ngrok-free.app', 'https://musicpro-f178a.firebaseapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','2195-181-203-224-214.ngrok-free.app']
 
 
 # Application definition
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'pedidos',
     'crispy_forms',
     'crispy_bootstrap5',
+    'musicrest',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -161,3 +163,8 @@ STRIPE_ENDPOINT_SECRET = 'whsec_3b152fd19dc7e23c8f2a9f5bc4ce50be53a6aa35e57df1bc
 
 #CRISPY FORMS
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
