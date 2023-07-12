@@ -15,8 +15,9 @@
       
               <div class="col">
                 <div class="card shadow-sm">
+                  {% if image.url %}
                 <img class="img-fluid" alt="Responsive image" src="{{ producto.imagen.url }}">
-      
+                  {% endif %}
                   <div class="card-body">
                     <p class="card-text">
                       <a class="text-dark text-decoration-none" href="tiendita:item/{{producto.slug}}">{{ producto.titulo }}</a>

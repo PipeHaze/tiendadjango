@@ -26,7 +26,7 @@ class Producto(models.Model):
     titulo = models.CharField(max_length=255)
     autor = models.CharField(max_length=255)
     descripcion = models.TextField(blank=True)
-    imagen = models.ImageField(upload_to='media/')
+    imagen = models.ImageField(upload_to='media/', blank=True)
     slug = models.SlugField(max_length=255)
     precio = models.DecimalField(max_digits=7, decimal_places=3)
     en_stock = models.BooleanField(default=True)

@@ -54,8 +54,10 @@
         <div class="card mb-3 border-0 product-item" data-index="{{producto.id}}">
           <div class="row g-0">
             <div class="col-md-2 d-none d-md-block">
+              {% if image.url %} 
               <img class="img-fluid mx-auto d-block" alt="Responsive image"
                   src="{{ producto.imagen.url }}" />
+                  {% endif %}
             </div>
             <div class="col-md-10 ps-md-3">
               <div class="card-body p-1">
